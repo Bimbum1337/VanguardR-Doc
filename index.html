@@ -1,0 +1,1096 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Documentation Template</title>
+    <meta name="description" content="A simple HTML/CSS DocumentationTemplate">
+    <meta name="author" content="Carlos Yllobre">
+
+    <link rel="stylesheet" href="style.css?">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;700&family=Open+Sans:ital,wght@0,400;0,700;1,600&display=swap" rel="stylesheet">
+    
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+
+
+</head>
+
+<body>
+
+    <div class="navbar clear nav-top">
+        <div class="row content">
+			<a href="#"><img class="logo" src="logo.svg" width="150" height="70"></a>
+            <a class="right" style="text-decoration: underline;" href="#"><i class="fas fa-book"></i>&nbsp; Documentation</a>
+            <a class="right" href="https://discord.gg/pvBFFZbyN8" target="_blank"><i class="fa-brands fa-discord"></i>&nbsp; Vanguard</a>
+        </div>
+    </div>
+
+    <div class="container clear">
+        <div class="row wrapper">
+
+            <div class="sidepanel">
+
+                <a class="title" href="#">Introduction</a>
+                
+                <a class="section" href="#">Supported Versions</a>
+                <div class="divider left"></div>
+
+                <a class="title" href="#gettingstarted">Getting Started</a>
+
+                <a class="section" href="#installingapp">Installalation</a>
+
+                <div class="divider left"></div>
+
+                <a class="title" href="#basicfeatures">Procedures</a>
+
+                <div class="divider left"></div>
+
+                <a class="title" href="#advanced">Advanced Features</a>
+                <div class="divider left"></div>
+
+                
+             <div class="space double"></div>
+
+            </div>
+
+            <div class="right-col">
+            
+
+
+                <h1 >Introduction</h1>
+                
+                <p>Vanguard is insane addon with intensive features for rigid isro-r released files ..Elevate your experience with the ultimate solution you’ve been waiting for!.</p> 
+            
+                <h2>Latest Version:</h2>
+             
+                <p><b>Version 7.0.0.</b> (19-12-2024) Stable.</p>
+
+                 
+        <div class="divider" style="width:24%; margin:30px 0;"></div>
+
+                <h1>Getting Started</h1>
+
+                <h2>Installalation</h2>
+                
+                <p>Its simple as injecting dlls to modules and thats it.</p>
+                <video width="640" height="360" controls>
+        <source src="2024-09-07_16-55-32.mp4" type="video/mp4">
+    </video>
+                   <ol>
+ 
+					<li>
+                     Download latest version rar.
+                    </li>
+                    <li>
+                    Restore vanguard.bak database.
+                    </li>
+					<li>
+                    Copy smc folder into your smc folder.
+                    </li>
+					<li>
+                    Inject Smc.dll into SMC_Real.exe
+                    </li>
+					<li>
+                    Register an account
+                    </li>
+					<li>
+                    Copy module folder into your server files folder.
+                    </li>
+					<li>
+                    Copy gameserver folder into your gameserver folder.
+                    </li>
+					<li>
+                    Edit your database data at vanguard/ ini.
+                    </li>
+					<li>
+                    Copy modulekey from smc into Key at vanguard / ini.
+                    </li>
+					<li>
+                    Copy client data.
+                    </li>
+					<li>
+                    Copy clientkey from smc into Key in Settings / settings.ini.
+                    </li>					
+					<li>
+                    Inject only vanguard.dll into your sro_client.exe.
+                    </li>
+                </ol>
+
+                
+                <p id="basicfeatures">.</p>
+
+                    
+            <div class="divider" style="width:24%; margin:30px 0;"></div>
+            
+            
+                <h1>Procedures</h1>
+
+                <h2><u>_GameServerAutoEquipmentCallBack</u></h2>
+                
+				<img src="autoequip.png"">
+
+                <p>    
+				@CharID INT,
+				@Level INT
+                </p>
+				
+				<p>
+					This procedure will be called by gameserver incase u enabled auto equipment, so here you can put your own logic to give FB to the player
+				</p>
+				
+				<h2><u>_GameServerBuyOldItemMallItem</u></h2>
+                				<img src="mall.png"">
+
+                <p>    
+				@CharID INT,
+				@PackageCodeName VARCHAR(255),
+				@PackageCount SMALLINT
+                </p>
+				
+				<p>
+					This procedure will be called by gameserver incase u enabled old item mal when player purchases an item from old item mall, at this point you will have to build
+					your own buy process.
+				</p>
+				<h2><u>_GameServerControlBattleArenaRegister</u></h2>
+                
+                <p>    
+				    @CharID INT,
+					@BattleArenaType TINYINT
+                </p>
+				
+				<p>
+					This procedure will be called by gameserver when player registering at battle arena, returning 0 will block him from registering. returning 1 will allow him.	
+				</p>
+				<h2><u>_GameServerControlFlagWorldRegister</u></h2>
+                
+                <p>    
+				@CharID INT
+                </p>
+				
+				<p>
+					This procedure will be called by gameserver when player registering at CTF, returning 0 will block him from registering. returning 1 will allow him.	
+				</p>
+				<h2><u>_GameServerControlItem</u></h2>
+                
+                <p>    
+				    @CharID INT,
+	@ItemRefObjId INT
+                </p>
+				
+				<p>
+					This procedure will be called by gameserver when player uses an item, so that you can put ur own logic to block items at specific conditions. returning 0 will block him from using the item. returning 1 will allow him.	
+				</p>
+				<h2><u>_GameServerControlMonsters</u></h2>
+                
+                <p>    
+				@CharID INT,
+				@MonsterRefObjId INT
+                </p>
+				
+				<p>
+					This procedure will be called by gameserver when player attacks monster so that you can build your own logic for example making INT or STR uniques
+					returning 0 will block him. returning 1 will allow him.	
+				</p>
+				
+				<h2><u>_GameServerControlPickUp</u></h2>
+                
+                <p>    
+				 @CharID INT,
+				@ItemRefObjID INT
+                </p>
+				
+				<p>
+					This procedure will be called by gameserver when player tries to pick any item returning 0 will block him. returning 1 will allow him.
+				</p>
+				
+				<h2><u>_GameServerControlQuestReceiveRequest</u></h2>
+                
+                <p>    
+				    @CharID INT,
+	@QuestID INT
+                </p>
+				
+				<p>
+					This procedure will be called by gameserver when user takes a quest or deliver it returning 0 will block him. returning 1 will allow him.
+				</p>
+				
+				<h2><u>_GameServerControlSellingGoods</u></h2>
+                
+                <p>    
+				@CharID INT,
+	@NPCID INT,
+	@GoodID INT,
+	@Quantity SMALLINT,
+	@Slot TINYINT
+                </p>
+				
+				<p>
+					This procedure will be called by gameserver when player tries to sell goods, you can use it to make custom rewards .returning 0 will block him. returning 1 will allow him.
+				</p>
+
+				<h2><u>_GameServerControlSkills</u></h2>
+                
+                <p>    
+				 @CharID INT,
+	@SkillID INT
+                </p>
+				
+				<p>
+					This procedure will be called by gameserver when player uses any skill, returning 0 will block him. returning 1 will allow him.
+				</p>
+				
+				<h2><u>_GameServerControlSurvivalRegister</u></h2>
+                
+                <p>    
+				CharID INT
+                </p>
+				
+				<p>
+					This procedure will be called by gameserver when player registers at survival . returning 0 will block him. returning 1 will allow him.
+				</p>
+				
+				<h2><u>_GameServerControlTeleport</u></h2>
+                                				<img src="teleport.png"">
+
+                <p>    
+				@CharID INT,
+	@TargetID INT
+                </p>
+				
+				<p>
+					This procedure will be called by gameserver when player tries to teleport to any gate, TargetID is gateid returning 0 will block him. returning 1 will allow him.
+				</p>
+				
+				<h2><u>_GameserverGetAnalyzerDataByCharID</u></h2>
+                
+                <p>    
+				@CharID INT
+                </p>
+				
+				<p>
+					This procedure called internally by gameserver.
+				</p>
+				
+				<h2><u>_GameServerGetJackpotData</u></h2>
+                
+                <p>
+                </p>
+				
+				<p>
+					This procedure called internally by gameserver.
+				</p>
+				
+				<h2><u>_GameServerIsUserRegisteredAtEvent</u></h2>
+                
+                <p>    
+				@EventID INT,
+	@CharID INT
+                </p>
+				
+				<p>
+					This procedure called internally by gameserver.
+				</p>
+				
+				<h2><u>_GameServerJackpotAddSilk</u></h2>
+                
+                <p>    
+				@CharID INT,
+	@JID INT,
+	@SilkAmount INT
+                </p>
+				
+				<p>
+					This procedure called internally by gameserver.when player adds silk to jackpot
+				</p>
+				
+				<h2><u>_GameServerLimitsChecker</u></h2>
+                
+                <p>    
+				    @CharID INT
+
+                </p>
+				
+				<p>
+					This procedure is a custom procedure made to check for limits such as hwid or ip limits.
+					you can change hwid limits and so on from it.
+				</p>
+				
+				<h2><u>_GameServerOnBattleArenaFinish (NOTIFY)</u></h2>
+                
+                <p>    
+				@EventType VARCHAR(100),
+				@CharID INT,
+				@Type TINYINT
+                </p>
+				
+				<p>
+					This procedure will be called by gameserver when battle arena finishes. 
+						--Type 0 'WIN'
+						--Type 1 'LOSE'
+						--Type 2 'DRAW'
+				</p>
+				
+				<h2><u>_GameServerOnBattleArenaKill (NOTIFY)</u></h2>
+                
+                <p>    
+				    @EventType VARCHAR(100),
+	@KillerID INT,
+	@KilledID INT
+                </p>
+				
+				<p>
+					This procedure will be called by gameserver when a kill happen at battle arena 
+				</p>
+				
+				<h2><u>_GameServerOnExchangeEnd (NOTIFY)</u></h2>
+                
+                <p>    
+				@CharID INT
+                </p>
+				
+				<p>
+					This procedure will be called by gameserver when exchange session ends.
+				</p>
+				
+				<h2><u>_GameServerOnExchangeStart (NOTIFY)</u></h2>
+                
+                <p>    
+				@CharID INT
+                </p>
+				
+				<p>
+					This procedure will be called by gameserver when exchange session starts.
+				</p>
+				
+				<h2><u>_GameServerOnFlagWorldFinish (NOTIFY)</u></h2>
+                
+                <p>    
+				@CharID INT,
+				@Type TINYINT
+                </p>
+				
+				<p>
+					This procedure will be called by gameserver when ctf ends.
+				</p>
+				
+				<h2><u>_GameServerOnFlagWorldKill (NOTIFY)</u></h2>
+                
+                <p>    
+					@KillerID INT,
+	@KilledID INT
+                </p>
+				
+				<p>
+					This procedure will be called by gameserver when a kill happens at ctf
+				</p>
+				
+				<h2><u>_GameServerOnFWEndCounter_Guilds (NOTIFY)</u></h2>
+                <h2><u>_GameServerOnFWEndCounter_Players (NOTIFY)</u></h2>
+
+                <p>    
+    @CharName VARCHAR(32),
+	@TotalKills INT,
+	@PosIndex INT,
+	@FortressId INT
+                </p>
+				
+				<p>
+					This procedure will be called by gameserver when fortress ends with counter results, so that you can reward top players / guilds kills.
+				</p>
+				
+				<h2><u>_GameServerOnKill (NOTIFY)</u></h2>
+                
+                <p>    
+				@KillerCharID INT,
+	@KilledCharID INT,
+	@RegionID INT,
+	@WorldID SMALLINT,
+	@IsInJobMode BIT
+                </p>
+				
+				<p>
+					This procedure will be called by gameserver. this is a general killer procedure will be called whenever someone kills another.
+				</p>
+				
+				<h2><u>_GameServerOnRemoveCustomTitle (NOTIFY & ACTIONS)</u></h2>
+                
+                <p>    
+				    @CharID INT,
+	@SendNotification BIT
+                </p>
+				
+				<p>
+					This procedure will be called by gameserver. its when player tries to remove used title from achievement wnd 
+				</p>
+				
+				<h2><u>_GameServerOnSetCustomTitle (NOTIFY & ACTIONS)</u></h2>
+                
+                <p>    
+				    @CharID INT,
+	@TitleID INT
+                </p>
+				
+				<p>
+					This procedure will be called by gameserver when player uses a title from achievement wnd
+				</p>
+				
+				<h2><u>_GameServerOnUpdateRegion (NOTIFY)</u></h2>
+                
+                <p>    
+					@CharID INT,
+	@Region SMALLINT,
+	@IsInSafeZone BIT
+                </p>
+				
+				<p>
+					This procedure will be called by gameserver when player enters new region
+				</p>
+				
+				<h2><u>_GameServerOnUpdateShardPosition (NOTIFY)</u></h2>
+                
+                <p>    
+				    @CharID INT,
+	@RegionID INT,
+	@PosX INT,
+	@PosY INT,
+	@PosZ INT
+                </p>
+				
+				<p>
+					This procedure will be called by gameserver if you assigned to region EF_FREE_PVP_REGION flag
+				</p>
+				
+				<h2><u>_GameServerSaveMacroOptions</u></h2>
+                
+                <p>    
+				@CharID INT,
+	@Option_ID INT,
+	@Value INT
+                </p>
+				
+				<p>
+					This procedure called internally by gameserver.
+				</p>
+				
+				<h2><u>_GameserverSwitchersCallBack</u></h2>
+                                                				<img src="switcher.png"">
+
+                <p>    
+					@CharID INT,
+	@SwitcherItemID INT,
+	@TargetItemID INT,
+	@TargetItemSlot TINYINT
+                </p>
+				
+				<p>
+					This procedure will be called by gameserver you can replace the default switchers to do another job or returning 2 will keep it as default
+if you wanna create a custom one, just copy existing switcher with same typeid, then you can handle it at this procedure by itemid
+so now, you will be able to create as many as you want to switch avatars  male <-> female
+to make item visual models and so on easily
+				</p>
+				<h2><u>_GatewayCreateBetaAccount</u></h2>
+				<h2><u>_GatewayIsGMAccount</u></h2>
+                
+                <p>    
+                </p>
+				
+				<p>
+					This procedure called internally by Gateway.
+				</p>
+				
+				<h2><u>_ShardManagerAddBuff</u></h2>
+				<h2><u>_ShardManagerRemoveBuff</u></h2>
+				<h2><u>_ShardManagerAddDamage</u></h2>
+				<h2><u>_ShardManagerAddExperienceJob</u></h2>
+				<h2><u>_ShardManagerAddExperiencePoints</u></h2>
+				<h2><u>_ShardManagerAddGold</u></h2>
+				<h2><u>_ShardManagerAddItem</u></h2>
+				<h2><u>_ShardManagerAddOrUpdateCustomIcon</u></h2>
+				<h2><u>_ShardManagerRemoveCustomIcon</u></h2>
+				<h2><u>_ShardManagerSendNotice</u></h2>
+				<h2><u>_ShardManagerSetPVPCape</u></h2>
+				<h2><u>_ShardManagerSetZerkLevel</u></h2>
+				<h2><u>_ShardManagerAddSkillPoints</u></h2>
+				<p>    
+                </p>
+				
+				<p>
+					Basic procedures where you can add or do actions to user
+				</p>
+				
+				<h2><u>_ShardManagerAttackBlockByKey</u></h2>
+				<h2><u>_ShardManagerAttackEnableByKey</u></h2>
+				 <p>    
+					@Key VARCHAR(128),
+	@Regions VARCHAR(512)
+                </p>
+				
+				<p>
+					This procedure will be called by you, where you can block attack at specific regions by key, wouldn't recommend to use this and use _ShardManagerSetRegionSafeZoneState 
+				</p>
+				
+				<h2><u>_ShardManagerBanActions</u></h2>
+				<p>    
+					@CharID INT,
+	@Type INT
+                </p>
+								<p>
+					This procedure will be called by you, where you can ban user by ip or hwid
+				</p>
+				<h2><u>_ShardManagerBattlePassAddPoints</u></h2>
+				<p>
+					This procedure will be called by you, where you can give user battle pass points based at your own logic.
+				</p>
+				
+				<h2><u>_ShardManagerBattlePassClaimItem</u></h2>
+				<h2><u>_ShardManagerBattlePassPurchasePremium</u></h2>
+                
+                <p>    
+    @CharID INT,
+	@JID INT
+                </p>
+				
+				<p>
+					This procedure will be called internally by shardmanager. when player purchases battle pass
+				</p>
+				
+				<h2><u>_ShardManagerCharacterReload</u></h2>
+                
+                <p>    
+				@CharID INT
+                </p>
+				
+				<p>
+					This procedure will be called by you, to teleport the user to the same location.
+				</p>
+				
+				<h2><u>_ShardManagerConsumeItem</u></h2>
+                
+                <p>    
+					@CharID INT,
+	@SlotID INT,
+	@Count INT
+                </p>
+				
+				<p>
+					This procedure will be called by you to consume item or delete it from player's inventory
+				</p>
+				
+				<h2><u>_ShardManagerControlCharNameValidity</u></h2>
+                                                                				<img src="check.png"">
+
+                <p>    
+				        @JID INT,
+	@CharName VARCHAR(32),
+	@JobType TINYINT
+                </p>
+				
+				<p>
+					This procedure will be called by shardmanager, when he tries to register to a job
+					returning 0 will block him. returning 1 will allow him.
+				</p>
+				
+				<h2><u>_ShardManagerCounterCreate</u></h2>
+                <h2><u>_ShardManagerCounterOnRemove</u></h2>
+                <h2><u>_ShardManagerCounterRemove</u></h2>
+<img src="counter.png"">
+				
+				<p>
+					We have 3 types of counters<br />
+Normal => type 0<br />
+Job => type 1<br />
+icon paths: juicer\counter\thief_icon.ddj,  juicer\counter\thief_icon.ddj<br />
+Team => type 2<br />
+
+example:<br />
+EXEC [dbo].[_ShardManagerCounterCreate] 'Counter_1', 2,'24744,24488', 1, 1    --Create Counter<br />
+
+EXEC [dbo].[_ShardManagerCounterRemove] 'Counter_1'   --Remove Counter<br />
+
+_ShardManagerCounterOnRemove => here the players will be reported with their kill counts so that you can reward him based at their position..
+				</p>
+				
+				<h2><u>_ShardManagerCustomAchievementColor_Add</u></h2>
+				<h2><u>_ShardManagerCustomAchievementColor_Remove</u></h2>
+				<h2><u>_ShardManagerCustomNameColor_Add</u></h2>
+				<h2><u>_ShardManagerCustomNameColor_Remove</u></h2>
+				<h2><u>_ShardManagerCustomTitleColor_Add</u></h2>
+				<h2><u>_ShardManagerCustomTitleColor_Remove</u></h2>
+				<h2><u>_ShardManagerDeleteCustomTitle</u></h2>
+                
+                <p>    
+
+                </p>
+				
+				<p>
+					This procedure will be called by you, where you can assign to user some color and remove from him live.
+				</p>
+				
+				<h2><u>_ShardManagerDisconnectPlayer</u></h2>
+                
+                <p>    
+				@CharID INT
+                </p>
+				
+				<p>
+					This procedure will be called by you, where you can disconnect any player
+				</p>
+				
+				<h2><u>_ShardManagerDropCopyOfPlayerInventory</u></h2>
+                
+                <p>    
+				@CharID INT
+                </p>
+				
+				<p>
+					This procedure will be called by you, where you can drop a copy of all player's inventory in the ground. mainly made for events.
+				</p>
+				
+				<h2><u>_ShardManagerEventSuit_AssignBlueTeam</u></h2>
+				<h2><u>_ShardManagerEventSuit_AssignRedTeam</u></h2>
+				<h2><u>_ShardManagerEventSuit_Remove</u></h2>
+                
+                <p>    
+
+                </p>
+				
+				<p>
+					This procedure will be called by you, where you can assign to user red or blue suit and remove from him.
+				</p>
+				
+				<h2><u>_ShardManagerFun_ChangeWeatherToNightMare</u></h2>
+				<h2><u>_ShardManagerFun_ChangeWeatherToNormal</u></h2>
+				<h2><u>_ShardManagerFun_ShakeScreen</u></h2>
+                <video width="640" height="360" controls>
+        <source src="2024-06-28_01-58-09.mp4" type="video/mp4">
+    </video>
+                <p>    
+                </p>
+				
+				<p>
+					This procedure will be called by you, just some fun procedures..
+				</p>
+				
+								<h2><u>_ShardManagerGrantName</u></h2>
+                
+                <p>    
+				@CharID INT,
+				@Name
+                </p>
+				
+				<p>
+					This procedure will be called by you, where you can assign grant name to any player
+				</p>
+				
+				
+								<h2><u>_ShardManagerJackpotWinners</u></h2>
+                
+                <p>    
+                </p>
+				
+				<p>
+					This procedure will be called by you, where you announcement players who won  the jackpot, you may need to rewrite it also you can use a third part tool
+					to execute this procedure at specific time daily.
+				</p>
+				
+								<h2><u>_ShardManagerLiveChangeCharacterData</u></h2>
+                
+                <p>    
+					@CharID INT,
+	@ParamID INT,
+	@ParamValue FLOAT
+                </p>
+				
+				<p>
+						--- THIS IS TEMPORARY UPDATE, AND WILL FLUSH UPON TELEPORTATION, THERE ARE PARAMS FROM 0 UP TO 199, BUT THE MENTIONED ONES WILL BE<br />
+	-- THE ONE THAT I HANDLED TO UPDATE THEM LIVE, I DIDN'T TEST OTHERS BUT I DON'T THINK IT WILL GET AFFECT LIVE.<br />
+
+	--PARAM_STRENGTH = 1,<br />
+	--PARAM_INTELLECT = 2,<br />
+	--PARAM_MAX_HEALTH = 3,<br />
+	--PARAM_MAX_MANA = 4,<br />
+	--PARAM_PHY_DEF = 5,<br />
+	--PARAM_MAG_DEF = 6,<br />
+	--PARAM_PHY_ABS = 7,<br />
+	--PARAM_MAG_ABS = 8,<br />
+	--PARAM_PARRY_RATIO = 9,<br />
+	--PARAM_BLOCK_RATIO = 10,<br />
+	--PARAM_HIT_RATE = 11,<br />
+	--PARAM_CRITICAL = 12,<br />
+	--PARAM_PHY_ATTACK_MIN = 13,<br />
+	--PARAM_PHY_ATTACK_MAX = 14,<br />
+	--PARAM_MAG_ATTACK_MIN = 15,<br />
+	--PARAM_MAG_ATTACK_MAX = 16,<br />
+				</p>
+				
+								<h2><u>_ShardManagerMakeMonsterFriendlyWithPlayer</u></h2>
+                
+                <p>    
+					@CharID INT,
+	@MonsteryKey VARCHAR(64)
+                </p>
+				
+				<p>
+					This procedure will be called by you. its made for events such as defend the tower, where you can make the player cannot attack the tower and vice versa
+				</p>
+				
+								<h2><u>_ShardManagerMapDrawObject</u></h2>
+								<h2><u>_ShardManagerMapRemoveObject</u></h2>
+<img src="map.png"">
+                
+                <p>    
+			
+                </p>
+				
+				<p>
+					This procedure will be called by you, where you can live add or remove ddj image or gif to the map
+				</p>
+				
+								<h2><u>_ShardManagerMessageBox_Show</u></h2>
+								<h2><u>_ShardManagerMessageBox_OnAnswer</u></h2>
+								    <video width="640" height="360" controls>
+        <source src="2024-11-21_12-19-07.mp4" type="video/mp4">
+    </video>
+                
+                <p>    
+                </p>
+				
+				<p>
+					_ShardManagerMessageBox_Show: to show it to the player<br />
+@MessageID is unique identifier from 0 to whatever<br />
+@TimeOutMilliSeconds how many milliseconds if no answer the message box will disappear<br />
+@Title, @Description are from textuisystem codename<br />
+
+_ShardManagerMessageBox_OnAnswer: where the answer will be handled<br />
+@MessageID is unique identifier u assigned it to the messagebox<br />
+@Answer 1 is accepted 0 is rejected.<br />
+
+Ex:<br />
+EXEC [_ShardManagerMessageBox_Show] 9164, 5, 10000, 'UIIT_STT_CONFIRM_BOX', 'UIIT_STT_REFERRAL_SYSTEM_CONFIRM'<br />
+				</p>
+				
+								<h2><u>_ShardManagerMovementBlockByKey</u></h2>
+								<h2><u>_ShardManagerMovementEnableByKey</u></h2>
+                
+                <p>    
+	@Key VARCHAR(128),
+	@Regions VARCHAR(512)                </p>
+				
+				<p>
+					This procedure will be called by you, to block movements in specific regions
+				</p>
+				
+				
+								<h2><u>_ShardManagerMutateItem</u></h2>
+                
+                <p>    
+					@CharID INT,
+	@SlotID INT,
+	@CodeName128 VARCHAR(128)
+                </p>
+				
+				<p>
+					This procedure will be called by you, to live change item to new @CodeName128
+				</p>
+				
+								<h2><u>_ShardManagerOnAddNewCustomTitle  (NOTIFY & ACTIONS)</u></h2>
+                
+                <p>    
+				    @CharID INT,
+	@TitleName VARCHAR(128)
+                </p>
+				
+				<p>
+					This procedure will be called by you or shardmanager, where you can assign custom achievement to user
+				</p>
+				
+								<h2><u>_ShardManagerOnCreatePartyMatching (NOTIFY)</u></h2>
+								<h2><u>_ShardManagerOnDeletePartyMatching (NOTIFY)</u></h2>
+                
+                <p>    
+                </p>
+				
+				<p>
+					This procedure will be called by Shardmanager oncreate or delete of party matching
+				</p>
+				
+								<h2><u>_ShardManagerOnEverySpawn (NOTIFY & ACTIONS)</u></h2>
+                
+                <p>    
+					@CharName VARCHAR(128),
+	@CharID INT,
+	@JID INT,
+	@IsInJOB BIT,
+	@IsInFW BIT,
+	@IsInSafeZone BIT,
+	@JobType TINYINT,
+	@Region INT
+                </p>
+				
+				<p>
+					This procedure will be called by Shardmanager on every spawn succesfull of character.
+				</p>
+				
+								<h2><u>_ShardManagerOnFirstSpawn (NOTIFY & ACTIONS)</u></h2>
+                <img src="spawn.png"">
+                <p>    
+					@CharID INT,
+	@JID INT
+                </p>
+				
+				<p>
+					This procedure will be called by Shardmanager on player spawn successfully for the first time, you can put welcome message there.
+				</p>
+				
+								<h2><u>_ShardManagerOnLeaveJob (NOTIFY & ACTIONS)</u></h2>
+                
+                <p>    
+				@CharID INT
+                </p>
+				
+				<p>
+					This procedure will be called by shardmanager when player leaves the job
+				</p>
+				
+								<h2><u>_ShardManagerOnPartyJoin (NOTIFY & ACTIONS)</u></h2>
+								<h2><u>_ShardManagerOnPartyLeave (NOTIFY & ACTIONS)</u></h2>
+                
+                <p>    
+                </p>
+				
+				<p>
+					This procedure will be called by shardmanager to log party
+				</p>
+				
+								<h2><u>_ShardManagerOnRegisterJobSuccessfully (NOTIFY & ACTIONS)</u></h2>
+                
+                <p>    
+				    @JID INT,
+	@CharName VARCHAR(32),
+	@JobType TINYINT
+                </p>
+				
+				<p>
+					This procedure will be called by shardmanager when job is created successfully
+				</p>
+				
+								<h2><u>_ShardManagerOnUniqueKilled (NOTIFY)</u></h2>
+								<h2><u>_ShardManagerOnUniqueSpawn (NOTIFY)</u></h2>
+                
+                <p>    
+                </p>
+				
+				<p>
+					This procedure will be called by shardmanager to notify when unique killed or spawned
+				</p>
+				
+								<h2><u>_ShardManagerPushUserToTemporaryFreeItemForNextTeleport</u></h2>
+                
+                <p>    
+				@CharID INT
+                </p>
+				
+				<p>
+					you will be allowed to create custom equality events / or battle royale event yourself. once you push the user, the next teleport all his items will be temporary removed and the next teleport it will back again.
+
+this is so safe using only 1 gameserver, which means you don't need to create a custom gameserver for equality events anymore, iam using original asynchronous transactions of joymax to ensure that the items are safe.
+				</p>
+				
+				
+				
+								<h2><u>_ShardManagerSendHtmlScriptByCharID</u></h2>
+								<h2><u>_ShardManagerSendHtmlScriptToAll</u></h2>
+                
+                <p>    
+				
+                </p>
+				
+				<p>
+					Currently disabled procedures, will give information later.
+				</p>
+				
+				
+								<h2><u>__ShardManagerSendLogOrChatMessage</u></h2>
+                
+                <p>    
+				@CharID INT,
+@Type TINYINT,
+@Notice VARCHAR(512),
+@Color INT
+                </p>
+				
+				<p>
+					if @CharID = 0 => it will broadcast the message to whole server<br />
+if @Type = 0 then it will be a log message at the right<br />
+and if 1 it will be a message at chat <br />
+
+EXEC _ShardManagerSendLogOrChatMessage 0, 1, 'Hello WORLD',78786 <br />
+
+				</p>
+				
+				
+								<h2><u>_ShardManagerSendNotice</u></h2>
+                
+                <p>    
+				    @CharID INT,
+	@Type TINYINT,
+	@Notice VARCHAR(512)
+                </p>
+				
+				<p>
+					This procedure will be called by you, if u set @CharID 0, it will broadcast the notice
+					type 0,1,2,3,..
+				</p>
+				
+				
+								<h2><u>_ShardManagerSendScreenShot</u></h2>
+								<video width="640" height="360" controls>
+        <source src="2024-11-28_12-59-09.mp4" type="video/mp4">
+    </video>
+                
+                <p>    
+					@CharID INT,
+	@Token VARCHAR(255),
+	@ChannelID VARCHAR(255)
+                </p>
+				
+				<p>
+					what is that ? basically all servers discord has media channel where players can post their screenshots from the game. but what if you can force all players to send live screenshot of their characters and use it at advertisements. sick haa?
+				</p>
+				
+				
+								<h2><u>_ShardManagerSendSelectCharacterErrorMessage</u></h2>
+                
+                <p>    
+					@JID INT,
+    @Message VARCHAR(512),
+	@Color INT
+                </p>
+				
+				<p>
+					This procedure will be called by you, where u can send an error message to user if he in select screen (selecting character) 
+					maybe he is selecting a job and you want to send him an error msg that he cannot register job at this time
+				</p>
+				
+				
+								<h2><u>_ShardManagerSendTimerByCharID</u></h2>
+								<h2><u>_ShardManagerSendTimerByRegions</u></h2>
+                
+                <p>    
+				    @CharID INT,
+	@MilliSeconds INT
+                </p>
+				
+				<p>
+					Send a live timer to user by CharID or by regions
+				</p>
+				
+				
+								<h2><u>_ShardManagerSetRegionSafeZoneState</u></h2>
+                
+                <p>    
+				    @RegionID INT,
+	@State BIT
+                </p>
+				
+				<p>
+					This procedure will be called by you, where you can set region as safezone so that players cannnot attack each others.
+					@State = 1, means block... @State = 0, means allow attacking at this region
+				</p>
+				
+				
+								<h2><u>_ShardManagerSpawnObject</u></h2>
+								<h2><u>_ShardManagerSpawnObjectNearPlayer</u></h2>
+                
+                <p>    
+                </p>
+				
+				<p>
+					This procedure will be called by you, where you can spawn NPC or Monster or Strucutre or anything actually.
+				</p>
+				
+				
+								<h2><u>_ShardManagerSpawnObjectByKey</u></h2>
+								<h2><u>_ShardManagerSpawnObjectRemoveByKey</u></h2>
+                
+                <p>    
+                </p>
+				
+				<p>
+					This procedure will be called by you, where you can spawn an object by key. this key is a custom string you enter, so that later you can remove that monster.
+				</p>
+				
+				
+								<h2><u>__ShardManagerSynchronizeInventorySilk</u></h2>
+                
+                <p>    
+				@CharID INT
+                </p>
+				
+				<p>
+					This procedure will be called by you, let's say you added or took silk manually from user or there's a custom action that consume or add silk to user you gotta call this procedure incase u using silk in inventory to make it up to date...
+				</p>
+				
+												<h2><u>_ShardManagerTeleportAllPlayersAtRegion</u></h2>
+                
+                <p>    
+				@@RegionID INT
+                </p>
+				
+				<p>
+					This procedure will be called by you, where you can send all players in a specific region to town.
+				</p>
+				
+												<h2><u>_ShardManagerTeleportPlayer</u></h2>
+                
+                <p>    
+                </p>
+				
+				<p>
+					This procedure will be called by you, to teleport player to a speicifc location.
+				</p>
+				
+												<h2><u>_ShardManagerTeleportPlayerToTown</u></h2>
+                
+                <p>    
+                </p>
+				
+				<p>
+					This procedure will be called by you, to teleport player to town
+				</p>
+				
+				<p>
+					This procedure will be called by you, to teleport player to a speicifc location.
+				</p>
+				
+												<h2><u>_ShardManagerUpCounter_End</u></h2>
+												<h2><u>_ShardManagerUpCounter_Start</u></h2>
+                <video width="640" height="360" controls>
+        <source src="2024-11-08_19-47-53.mp4" type="video/mp4">
+    </video>
+                <p> 
+    @CharID INT,
+	@Color INT				
+                </p>
+				
+				<p>
+					Live send to user an up counter / remove it . this can be used to do systems like speed run or whatever you want
+				</p>
+                <div class="divider" style="width:24%; margin:30px 0;"></div>
+                
+                
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+
+</body>
+
+</html>
